@@ -7,4 +7,22 @@ public abstract class Document {
     private String titre;
     private int nbExemplaires;
     private List<EmpruntDetail> empruntDetails;
+
+    public Document(int documentID, String titre, int nbExemplaires) {
+        this.documentID = documentID;
+        this.titre = titre;
+        this.nbExemplaires = nbExemplaires;
+    }
+
+    public int getDocumentID() {
+        return documentID;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public int getNbExemplaires() {
+        return nbExemplaires;
+    }
 }

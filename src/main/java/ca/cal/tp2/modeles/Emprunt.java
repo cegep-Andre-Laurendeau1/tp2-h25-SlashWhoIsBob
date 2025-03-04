@@ -9,4 +9,12 @@ public class Emprunt {
     private LocalDate dateEmprunt;
     private String status;
     private List<EmpruntDetail> empruntDetails;
+
+    public Emprunt(int borrowID, int idEmprunteur, LocalDate dateEmprunt, String status, List<EmpruntDetail> empruntDetails) {
+        this.borrowID = borrowID;
+        this.idEmprunteur = idEmprunteur;
+        this.dateEmprunt = dateEmprunt;
+        this.status = status;
+        this.empruntDetails = empruntDetails;
+    }
 }
