@@ -1,8 +1,19 @@
 package ca.cal.tp2.modeles;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("DVD")
 public class DVD extends Document {
+    @Column(name = "director")
     private String director;
+
+    @Column(name = "duree")
     private int duree;
+
+    @Column(name = "rating")
     private String rating;
 
     public DVD(int docID, String titre, int nbExemplaires, String director, int duree, String rating) {
@@ -10,6 +21,9 @@ public class DVD extends Document {
         this.director = director;
         this.duree = duree;
         this.rating = rating;
+    }
+
+    public DVD() {
     }
 
     @Override

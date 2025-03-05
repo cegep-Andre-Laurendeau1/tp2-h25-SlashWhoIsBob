@@ -3,7 +3,7 @@ package ca.cal.tp2.modeles;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "UTILISATEUR")
+@Table(name = "UTILISATEURS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE_UTILISATEUR")
 public abstract class Utilisateur {

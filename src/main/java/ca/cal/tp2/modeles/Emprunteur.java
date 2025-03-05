@@ -20,6 +20,7 @@ public class Emprunteur extends Utilisateur {
     @OneToMany(mappedBy = "emprunteur")
     private List<Emprunt> emprunts;
 
+    // TODO est-ce que la liste d'amendes inclut les amendes payées ou simplement celle en attente d'être payées?
     @OneToMany(mappedBy = "emprunteur")
     private List<Amende> amendes;
 
