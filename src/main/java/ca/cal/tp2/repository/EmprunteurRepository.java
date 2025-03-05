@@ -1,5 +1,7 @@
 package ca.cal.tp2.repository;
 
-public interface EmprunteurRepository {
+import ca.cal.tp2.modeles.Emprunteur;
 
+public interface EmprunteurRepository {
+    void save(Emprunteur emprunteur);
 }

@@ -23,6 +23,14 @@ public class EmpruntDetail {
     @Column(name = "STATUS")
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "EMPRUNT_ID")
+    private Emprunt emprunt;
+
+    @ManyToOne
+    @JoinColumn(name = "DOCUMENT_ID")
+    private Document document;
+
     public EmpruntDetail(LocalDate dateRetourPrevue, LocalDate dateRetourActuelle, String status) {
         this.dateRetourPrevue = dateRetourPrevue;
         this.dateRetourActuelle = dateRetourActuelle;
