@@ -10,7 +10,7 @@ public class EmprunteurRepositoryJPA implements EmprunteurRepository {
             Persistence.createEntityManagerFactory("hibernate2.tp2");
 
     @Override
-    public void save(Emprunteur emprunteur) {
+    public void saveEmprunteur(Emprunteur emprunteur) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
             em.persist(emprunteur);

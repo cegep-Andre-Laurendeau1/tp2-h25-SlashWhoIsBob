@@ -13,6 +13,6 @@ public class EmprunteurService {
     }
 
     public void saveEmprunteur(String name, String email, String phoneNumber, LocalDate dateInscription, String codeUtilisateur) {
-        emprunteurRepository.save(new Emprunteur(name, email, phoneNumber, dateInscription, codeUtilisateur));
+        emprunteurRepository.saveEmprunteur(new Emprunteur(name, email, phoneNumber, dateInscription, codeUtilisateur));
     }
 }
