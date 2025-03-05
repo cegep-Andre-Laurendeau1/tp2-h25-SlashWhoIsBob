@@ -7,8 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "DOCUMENTS")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE_DOCUMENT")
+@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 public abstract class Document {
     @Id

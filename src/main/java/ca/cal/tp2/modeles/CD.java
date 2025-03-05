@@ -1,12 +1,10 @@
 package ca.cal.tp2.modeles;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 
 @Entity
-@DiscriminatorValue("CD")
 @NoArgsConstructor
 public class CD extends Document {
     @Column(name = "artiste")
