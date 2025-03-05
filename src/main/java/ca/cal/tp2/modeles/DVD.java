@@ -3,9 +3,11 @@ package ca.cal.tp2.modeles;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import lombok.NoArgsConstructor;
 
 @Entity
 @DiscriminatorValue("DVD")
+@NoArgsConstructor
 public class DVD extends Document {
     @Column(name = "director")
     private String director;
@@ -16,14 +18,11 @@ public class DVD extends Document {
     @Column(name = "rating")
     private String rating;
 
-    public DVD(int docID, String titre, int nbExemplaires, String director, int duree, String rating) {
-        super(docID, titre, nbExemplaires);
+    public DVD(String titre, int nbExemplaires, String director, int duree, String rating) {
+        super(titre, nbExemplaires);
         this.director = director;
         this.duree = duree;
         this.rating = rating;
-    }
-
-    public DVD() {
     }
 
     @Override

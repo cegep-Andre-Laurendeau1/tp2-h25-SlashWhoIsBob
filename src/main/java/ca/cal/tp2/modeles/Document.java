@@ -1,6 +1,7 @@
 package ca.cal.tp2.modeles;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
 @Table(name = "DOCUMENTS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE_DOCUMENT")
+@NoArgsConstructor
 public abstract class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,13 +25,9 @@ public abstract class Document {
     @OneToMany(mappedBy = "document")
     private List<EmpruntDetail> empruntDetails;
 
-    public Document(int documentID, String titre, int nbExemplaires) {
-        this.documentID = documentID;
+    public Document(String titre, int nbExemplaires) {
         this.titre = titre;
         this.nbExemplaires = nbExemplaires;
-    }
-
-    public Document() {
     }
 
     public int getDocumentID() {
