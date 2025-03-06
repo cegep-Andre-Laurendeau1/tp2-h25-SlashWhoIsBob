@@ -15,7 +15,7 @@
 <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
 
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost/tp2_postgres"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="admin"/>
 
