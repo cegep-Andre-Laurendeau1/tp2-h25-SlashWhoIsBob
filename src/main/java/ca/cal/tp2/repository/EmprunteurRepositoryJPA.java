@@ -23,14 +23,17 @@ public class EmprunteurRepositoryJPA implements EmprunteurRepository {
         }
     }
 
-    // TODO À revoir l'implémentation de cette méthode
     @Override
     public Emprunteur getEmprunteurByCodeUtilisateur(String codeUtilisateur) {
         try (EntityManager em = emf.createEntityManager()) {
-            String queryStr = "SELECT e FROM Utilisateur e LEFT JOIN FETCH e.amendes " +
-                    "LEFT JOIN FETCH e.emprunts " +
+            String queryStr = "SELECT e FROM Utilisateur e " +
+                    "LEFT JOIN FETCH e.amendes " +
+                    "LEFT JOIN FETCH e.emprunts em " +
+                    "LEFT JOIN FETCH em.empruntDetails ed " +
+                    "LEFT JOIN FETCH ed.document " +
                     "WHERE e.codeUtilisateur = :codeUtilisateur " +
                     "AND TYPE(e) = Emprunteur";
+
             TypedQuery<Utilisateur> query = em.createQuery(queryStr, Utilisateur.class);
             query.setParameter("codeUtilisateur", codeUtilisateur);
             return (Emprunteur) query.getSingleResult();

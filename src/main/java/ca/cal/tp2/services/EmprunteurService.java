@@ -5,6 +5,7 @@ import ca.cal.tp2.repository.EmprunteurRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class EmprunteurService {
@@ -42,7 +43,7 @@ public class EmprunteurService {
 
         if(livre.getNbExemplaires() > 0 && emprunteur.peutEmprunter()) {
             livre.emprunter();
-            Emprunt emprunt = new Emprunt(emprunteur, LocalDate.now(), "Bon état", new ArrayList<>());
+            Emprunt emprunt = new Emprunt(emprunteur, LocalDate.now(), "Bon état", new HashSet<>());
 
             EmpruntDetail empruntDetail = new EmpruntDetail(LocalDate.now().plusWeeks(livre.getDureeEmprunt()), null, "Bon état");
             empruntDetail.setDetails(emprunt, livre);
@@ -53,5 +54,10 @@ public class EmprunteurService {
         } else {
             System.out.println("L'emprunteur ne peut pas emprunter le document : " + livre.getTitre());
         }
+    }
+
+    public String rapportEmprunts(String codeUtilisateur) {
+        Emprunteur emprunteur = emprunteurRepository.getEmprunteurByCodeUtilisateur(codeUtilisateur);
+        return emprunteur.toString();
     }
 }

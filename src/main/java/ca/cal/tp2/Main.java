@@ -36,6 +36,8 @@ public class Main {
         emprunteurService.emprunterDocument("Harry Potter", "DJ12345");
         emprunteurService.emprunterDocument("Harry Potter", "DJ12345"); // Échoue car pas de copies disponibles
 
+        System.out.println(emprunteurService.rapportEmprunts("DJ12345"));
+
         //Thread.currentThread().join();
     }
 }
