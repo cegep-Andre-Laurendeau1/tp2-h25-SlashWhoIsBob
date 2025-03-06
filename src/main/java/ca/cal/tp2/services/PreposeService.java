@@ -12,8 +12,8 @@ public class PreposeService {
         this.preposeRepository = preposeRepository;
     }
 
-    public void saveLivre(String titre, int nbExemplaires, String ISBN, String auteur, String editeur, int nombrePages) {
-        preposeRepository.saveDocument(new Livre(titre, nbExemplaires, ISBN, auteur, editeur, nombrePages));
+    public void saveLivre(String titre, int nbExemplaires, String ISBN, String auteur, String editeur, int nombrePages, String anneePublication) {
+        preposeRepository.saveDocument(new Livre(titre, nbExemplaires, ISBN, auteur, editeur, nombrePages, anneePublication));
     }
 
     public void saveCD(String titre, int nbExemplaires, String artiste, int duree, String genre) {
