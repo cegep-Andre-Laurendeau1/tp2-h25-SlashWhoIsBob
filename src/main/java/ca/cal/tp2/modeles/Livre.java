@@ -22,6 +22,9 @@ public class Livre extends Document {
     @Column(name = "ANNEE_PUBLICATION")
     private String anneePublication;
 
+    @Column(name = "DUREE_EMPRUNT")
+    private final int dureeEmprunt = 3;
+
     public Livre(String titre, int nbExemplaires, String ISBN, String auteur, String editeur, int nombrePages, String anneePublication) {
         super(titre, nbExemplaires);
         this.ISBN = ISBN;

@@ -16,6 +16,9 @@ public class CD extends Document {
     @Column(name = "genre")
     private String genre;
 
+    @Column(name = "DUREE_EMPRUNT")
+    private final int dureeEmprunt = 2;
+
     public CD(String titre, int nbExemplaires, String artiste, int duree, String genre) {
         super(titre, nbExemplaires);
         this.artiste = artiste;

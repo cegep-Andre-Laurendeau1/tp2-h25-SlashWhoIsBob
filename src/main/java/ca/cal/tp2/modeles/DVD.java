@@ -16,6 +16,9 @@ public class DVD extends Document {
     @Column(name = "rating")
     private String rating;
 
+    @Column(name = "DUREE_EMPRUNT")
+    private final int dureeEmprunt = 1;
+
     public DVD(String titre, int nbExemplaires, String director, int duree, String rating) {
         super(titre, nbExemplaires);
         this.director = director;
