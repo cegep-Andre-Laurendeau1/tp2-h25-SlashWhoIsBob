@@ -35,4 +35,8 @@ public class DVD extends Document {
                 + ", Durée: " + this.duree
                 + ", Rating: " + this.rating + ")";
     }
+
+    public int getDureeEmprunt() {
+        return dureeEmprunt;
+    }
 }

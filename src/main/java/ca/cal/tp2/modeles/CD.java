@@ -35,4 +35,8 @@ public class CD extends Document {
                 + ", Durée: " + this.duree
                 + ", Genre: " + this.genre + ")";
     }
+
+    public int getDureeEmprunt() {
+        return dureeEmprunt;
+    }
 }

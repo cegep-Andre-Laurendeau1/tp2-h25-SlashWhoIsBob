@@ -7,6 +7,7 @@ import jakarta.persistence.OneToMany;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,5 +31,10 @@ public class Emprunteur extends Utilisateur {
         super(name, email, phoneNumber);
         this.dateInscription = dateInscription;
         this.codeUtilisateur = codeUtilisateur;
+        this.emprunts = new ArrayList<>();
+    }
+
+    public void addEmprunt(Emprunt emprunt) {
+        emprunts.add(emprunt);
     }
 }

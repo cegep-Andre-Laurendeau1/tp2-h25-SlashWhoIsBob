@@ -40,4 +40,8 @@ public abstract class Document {
     public int getNbExemplaires() {
         return nbExemplaires;
     }
+
+    public void emprunter() {
+        nbExemplaires--;
+    }
 }

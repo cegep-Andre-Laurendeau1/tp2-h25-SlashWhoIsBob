@@ -44,4 +44,8 @@ public class Livre extends Document {
                 + ", Éditeur: " + this.editeur
                 + ", Nombre de pages: " + this.nombrePages;
     }
+
+    public int getDureeEmprunt() {
+        return dureeEmprunt;
+    }
 }
