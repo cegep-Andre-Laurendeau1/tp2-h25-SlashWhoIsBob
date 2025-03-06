@@ -28,4 +28,8 @@ public abstract class Utilisateur {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }

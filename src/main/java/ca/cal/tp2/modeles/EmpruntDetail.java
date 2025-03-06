@@ -41,4 +41,11 @@ public class EmpruntDetail {
         this.emprunt = emprunt;
         this.document = document;
     }
+
+    @Override
+    public String toString() {
+        return "  Document : " + document.getTitre() +
+                ", Retour prévu: " + dateRetourPrevue;
+    }
+
 }

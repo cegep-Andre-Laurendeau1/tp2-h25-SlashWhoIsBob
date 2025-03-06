@@ -1,9 +1,6 @@
 package ca.cal.tp2.modeles;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -22,10 +19,9 @@ public class Emprunteur extends Utilisateur {
     @Column(name = "code_utilisateur")
     private String codeUtilisateur;
 
-    @OneToMany(mappedBy = "emprunteur")
-    private List<Emprunt> emprunts = new ArrayList<>();
+    @OneToMany(mappedBy = "emprunteur", cascade = CascadeType.ALL)
+    private Set<Emprunt> emprunts = new HashSet<>();
 
-    // TODO est-ce que la liste d'amendes inclut les amendes payées ou simplement celle en attente d'être payées?
     @OneToMany(mappedBy = "emprunteur")
     private Set<Amende> amendes = new HashSet<>();
 
@@ -42,4 +38,22 @@ public class Emprunteur extends Utilisateur {
     public boolean peutEmprunter() {
         return amendes.isEmpty();
     }
+
+    @Override
+    public String toString() {
+        String result = "\nEmprunteur : '" + getName()
+                + "' | Code Utilisateur : '" + this.codeUtilisateur + "'\n";
+
+        if (!emprunts.isEmpty()) {
+            result += "  Emprunts:\n";
+            for (Emprunt emprunt : emprunts) {
+                result += "    " + emprunt + "\n";
+            }
+        } else {
+            result += "  Aucun emprunt.\n";
+        }
+
+        return result;
+    }
+
 }

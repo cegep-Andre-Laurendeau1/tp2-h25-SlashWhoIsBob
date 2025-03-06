@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "EMPRUNTS")
@@ -26,9 +28,9 @@ public class Emprunt {
     private String status;
 
     @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EmpruntDetail> empruntDetails;
+    private Set<EmpruntDetail> empruntDetails = new HashSet<>();
 
-    public Emprunt(Emprunteur emprunteur, LocalDate dateEmprunt, String status, List<EmpruntDetail> empruntDetails) {
+    public Emprunt(Emprunteur emprunteur, LocalDate dateEmprunt, String status, Set<EmpruntDetail> empruntDetails) {
         this.emprunteur = emprunteur;
         this.dateEmprunt = dateEmprunt;
         this.status = status;
@@ -37,5 +39,20 @@ public class Emprunt {
 
     public void addEmpruntDetail(EmpruntDetail empruntDetail) {
         empruntDetails.add(empruntDetail);
+    }
+
+    @Override
+    public String toString() {
+        String result = "  Emprunt #" + this.borrowID + " du " + dateEmprunt + ":\n";
+
+        if (empruntDetails != null && !empruntDetails.isEmpty()) {
+            for (EmpruntDetail detail : empruntDetails) {
+                result += "    " + detail + "\n";
+            }
+        } else {
+            result += "    Aucun document emprunté.\n";
+        }
+
+        return result;
     }
 }

@@ -42,6 +42,7 @@ public class Livre extends Document {
                 + ", ISBN: " + this.ISBN
                 + ", Auteur: " + this.auteur
                 + ", Éditeur: " + this.editeur
+                + ", Année de publication: " + this.anneePublication
                 + ", Nombre de pages: " + this.nombrePages;
     }
 
