@@ -1,12 +1,10 @@
 package ca.cal.tp2.services;
 
-import ca.cal.tp2.modeles.CD;
-import ca.cal.tp2.modeles.DVD;
-import ca.cal.tp2.modeles.Emprunteur;
-import ca.cal.tp2.modeles.Livre;
+import ca.cal.tp2.modeles.*;
 import ca.cal.tp2.repository.EmprunteurRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmprunteurService {
@@ -30,5 +28,30 @@ public class EmprunteurService {
 
     public List<DVD> getDVDs(String titre, String director) {
         return emprunteurRepository.getDVDs(titre, director);
+    }
+
+    public void emprunterDocument(String titre, String codeUtilisateur) {
+        List<Livre> livres = emprunteurRepository.getLivres(titre, null, null);
+        if (!livres.isEmpty()) {
+            emprunter(livres.get(0), codeUtilisateur);
+        }
+    }
+
+    private void emprunter(Livre livre, String codeUtilisateur) {
+        Emprunteur emprunteur = emprunteurRepository.getEmprunteurByCodeUtilisateur(codeUtilisateur);
+
+        if(livre.getNbExemplaires() > 0 && emprunteur.peutEmprunter()) {
+            livre.emprunter();
+            Emprunt emprunt = new Emprunt(emprunteur, LocalDate.now(), "Bon état", new ArrayList<>());
+
+            EmpruntDetail empruntDetail = new EmpruntDetail(LocalDate.now().plusWeeks(livre.getDureeEmprunt()), null, "Bon état");
+            empruntDetail.setDetails(emprunt, livre);
+            emprunt.addEmpruntDetail(empruntDetail);
+            emprunteur.addEmprunt(emprunt);
+            emprunteurRepository.saveEmprunt(emprunt, emprunteur);
+            emprunteurRepository.saveLivre(livre);
+        } else {
+            System.out.println("L'emprunteur ne peut pas emprunter le document : " + livre.getTitre());
+        }
     }
 }

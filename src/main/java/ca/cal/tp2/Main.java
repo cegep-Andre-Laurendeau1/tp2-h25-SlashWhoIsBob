@@ -17,13 +17,13 @@ public class Main {
         //TcpServer.createTcpServer();
 
         EmprunteurService emprunteurService = new EmprunteurService(new EmprunteurRepositoryJPA());
-        emprunteurService.saveEmprunteur("John Doe", "doejohn@hotmail.com", "514-123-4567", LocalDate.now(), "DJ12345");
+//        emprunteurService.saveEmprunteur("John Doe", "doejohn@hotmail.com", "514-123-4567", LocalDate.now(), "DJ12345");
 
         PreposeService preposeService = new PreposeService(new PreposeRepositoryJPA());
 
-        preposeService.saveLivre("Harry Potter", 5, "978-2-07-058462-4", "J.K. Rowling", "Gallimard", 300, "1997");
-        preposeService.saveCD("Thriller", 3, "Michael Jackson", 42, "Pop");
-        preposeService.saveDVD("Inception", 2, "Christopher Nolan", 148, "10");
+//        preposeService.saveLivre("Harry Potter", 1, "978-2-07-058462-4", "J.K. Rowling", "Gallimard", 300, "1997");
+//        preposeService.saveCD("Thriller", 3, "Michael Jackson", 42, "Pop");
+//        preposeService.saveDVD("Inception", 2, "Christopher Nolan", 148, "10");
 
         List<Livre> livres = emprunteurService.getLivres("Potter", null, "1997");
         List<CD> cds = emprunteurService.getCDs("Thriller", null);
@@ -32,6 +32,9 @@ public class Main {
         livres.forEach(livre -> System.out.println("Livre(s) trouvé(s) : " + livre));
         cds.forEach(cd -> System.out.println("CD trouvé(s) : " + cd));
         dvds.forEach(dvd -> System.out.println("DVD trouvé(s) : " + dvd));
+
+        emprunteurService.emprunterDocument("Harry Potter", "DJ12345");
+        emprunteurService.emprunterDocument("Harry Potter", "DJ12345"); // Échoue car pas de copies disponibles
 
         //Thread.currentThread().join();
     }

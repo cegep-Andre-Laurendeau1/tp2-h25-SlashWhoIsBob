@@ -36,4 +36,9 @@ public class EmpruntDetail {
         this.dateRetourActuelle = dateRetourActuelle;
         this.status = status;
     }
+
+    public void setDetails(Emprunt emprunt, Document document) {
+        this.emprunt = emprunt;
+        this.document = document;
+    }
 }

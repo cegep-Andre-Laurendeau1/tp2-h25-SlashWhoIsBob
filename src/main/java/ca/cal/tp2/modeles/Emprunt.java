@@ -25,7 +25,7 @@ public class Emprunt {
     @Column(name = "STATUS")
     private String status;
 
-    @OneToMany(mappedBy = "emprunt")
+    @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpruntDetail> empruntDetails;
 
     public Emprunt(Emprunteur emprunteur, LocalDate dateEmprunt, String status, List<EmpruntDetail> empruntDetails) {
@@ -33,5 +33,9 @@ public class Emprunt {
         this.dateEmprunt = dateEmprunt;
         this.status = status;
         this.empruntDetails = empruntDetails;
+    }
+
+    public void addEmpruntDetail(EmpruntDetail empruntDetail) {
+        empruntDetails.add(empruntDetail);
     }
 }
