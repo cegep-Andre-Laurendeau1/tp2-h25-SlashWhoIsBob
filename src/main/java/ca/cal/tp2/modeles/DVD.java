@@ -30,18 +30,6 @@ public class DVD extends Document {
                 + ", Nombre d'exemplaires: " + getNbExemplaires()
                 + ", Directeur: " + this.director
                 + ", Durée: " + this.duree
-                + ", Rating: " + rating + ")";
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public int getDuree() {
-        return duree;
-    }
-
-    public String getRating() {
-        return rating;
+                + ", Rating: " + this.rating + ")";
     }
 }

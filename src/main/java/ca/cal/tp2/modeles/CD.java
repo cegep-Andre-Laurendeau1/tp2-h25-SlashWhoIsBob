@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CD extends Document {
     @Column(name = "artiste")
-    private String artise;
+    private String artiste;
 
     @Column(name = "duree")
     private int duree;
@@ -18,8 +18,18 @@ public class CD extends Document {
 
     public CD(String titre, int nbExemplaires, String artiste, int duree, String genre) {
         super(titre, nbExemplaires);
-        this.artise = artiste;
+        this.artiste = artiste;
         this.duree = duree;
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "CD(ID: " + getDocumentID()
+                + ", Titre: " + getTitre()
+                + ", Nombre d'exemplaires: " + getNbExemplaires()
+                + ", Artiste: " + this.artiste
+                + ", Durée: " + this.duree
+                + ", Genre: " + this.genre + ")";
     }
 }

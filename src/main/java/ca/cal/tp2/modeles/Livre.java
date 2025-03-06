@@ -30,4 +30,15 @@ public class Livre extends Document {
         this.nombrePages = nombrePages;
         this.anneePublication = anneePublication;
     }
+
+    @Override
+    public String toString() {
+        return "Livre(ID: " + getDocumentID()
+                + ", Titre: " + getTitre()
+                + ", Nombre d'exemplaires: " + getNbExemplaires()
+                + ", ISBN: " + this.ISBN
+                + ", Auteur: " + this.auteur
+                + ", Éditeur: " + this.editeur
+                + ", Nombre de pages: " + this.nombrePages;
+    }
 }
